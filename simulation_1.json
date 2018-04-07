@@ -1,0 +1,1 @@
+{"simulation_id": 1, "n_cars": 10, "cost": 37662, "nr_rides": 1000, "avg_wait": 5571, "km_driven": 8807, "beta_wait": 5, "beta_nr_cars": 100, "beta_km": 1, "learning_rate": 1.001}
