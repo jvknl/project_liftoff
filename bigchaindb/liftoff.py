@@ -59,7 +59,7 @@ def do_create (obj, obj_id, data, metadata):
   db_data = {
     'data': {
       'created_at': now_epoch,
-      'index': '__liftoff__{app_key}__{obj}__{obj_id}'.format (app_key=bdb_cfg['headers']['app_key'], obj=obj, obj_id=obj_id),
+      'index': '__liftoff__{app_key} {obj} {obj_id} '.format (app_key=bdb_cfg['headers']['app_key'], obj=obj, obj_id=obj_id),
       'object-type': obj,
       'object-id': obj_id,
       obj: data,
@@ -122,11 +122,12 @@ def create(obj, obj_id):
 def do_read (obj, obj_id, query=None):
   global bdb_cfg, bdb
 
-  search_query = '__liftoff__{}'.format(bdb_cfg['headers']['app_key'])
+  search_query = '"__liftoff__{}'.format(bdb_cfg['headers']['app_key'])
   if obj is not None:
-    search_query += '__{}'.format(obj)
+    search_query += ' {}'.format(obj)
     if obj_id is not None:
-      search_query += '__{}'.format(obj_id)
+      search_query += ' {}'.format(obj_id)
+  search_query += ' "'
   if query is not None:
     search_query = query
 
